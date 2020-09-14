@@ -1,0 +1,43 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-music-service
+  labels:
+    app: spring-music
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: ClusterIP
+  selector:
+    app: spring-music
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-music
+  # annotations:
+  #   prometheus.io/path: '/actuator/prometheus'
+  #   prometheus.io/port: '8080'
+  #   prometheus.io/scrape: 'true'
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-music
+  template:
+    metadata:
+      name: spring-music
+      labels:
+        app: spring-music
+    spec:
+      containers:
+      - image: ppandit/spring-music:latest
+        name: spring-music
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        env:
+        - name: SPRING_MYSQL_HOST
+          value: "mysql.default.svc.cluster.local"

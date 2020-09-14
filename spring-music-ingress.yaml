@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: spring-music
+  labels:
+    app: spring-music
+spec:
+  rules:
+  - host: music.tkg.lab.panditlabs.online
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: spring-music-service
+          servicePort: 80
