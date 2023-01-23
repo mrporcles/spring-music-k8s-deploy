@@ -22,7 +22,7 @@ metadata:
   #   prometheus.io/port: '8080'
   #   prometheus.io/scrape: 'true'
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: spring-music
