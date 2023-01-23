@@ -33,7 +33,7 @@ spec:
         app: spring-music
     spec:
       containers:
-      - image: ppandit/spring-music:latest
+      - image: ghcr.io/mrporcles/spring-music:latest
         name: spring-music
         ports:
         - containerPort: 8080

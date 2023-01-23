@@ -1,0 +1,5 @@
+resources:
+  - 01-mysql-deploy.yaml
+  - 02-spring-music-deploy.yaml
+  - 03-spring-music-ingress.yaml
+  
